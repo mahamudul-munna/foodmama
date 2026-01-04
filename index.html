@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>foodmama - Food Delivery in Dhaka | Order Online</title>
+  <meta name="description" content="Order food online from the best restaurants in Dhaka. Fast delivery, huge variety, exclusive deals - only on foodmama!"/>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #d92332;        /* foodmama red - energetic food color */
+      --primary-dark: #b01c28;
+      --orange: #ff6b35;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --dark: #212529;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Header / Top Bar */
+    .top-bar {
+      background: var(--dark);
+      color: white;
+      padding: 10px 5%;
+      font-size: 0.92rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-bar a {
+      color: var(--orange);
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    .top-bar a:hover { text-decoration: underline; }
+
+    /* Main Navbar */
+    .navbar {
+      background: white;
+      padding: 15px 5%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-links a {
+      margin-left: 2.2rem;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero + Location + Search */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+                  url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+      color: white;
+      padding: 100px 5% 140px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+    }
+
+    .location-bar {
+      background: white;
+      color: var(--dark);
+      padding: 16px 24px;
+      border-radius: 50px;
+      max-width: 620px;
+      margin: 2rem auto 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      font-weight: 500;
+    }
+
+    .search-container {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 18px 24px 18px 60px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      outline: none;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+      color: var(--gray);
+    }
+
+    /* Filters & Sort */
+    .filters {
+      padding: 0 5% 30px;
+      background: white;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .filter-btn {
+      background: #eee;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Restaurants Grid */
+    section {
+      padding: 50px 5%;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-dark);
+    }
+
+    .restaurants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .restaurant-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .restaurant-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .restaurant-img {
+      height: 200px;
+      background: #eee;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .restaurant-info {
+      padding: 1.4rem;
+    }
+
+    .restaurant-name {
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cuisine {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .rating {
+      background: #28a745;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { padding: 80px 5% 120px; }
+      .hero h1 { font-size: 2.8rem; }
+      .filters { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div>foodmama - Food & more, delivered fast in Dhaka</div>
+    <div>
+      <a href="#">Help</a>
+      <a href="#">Login / Sign up</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">foodmama</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Restaurants</a>
+      <a href="#">New on foodmama</a>
+      <a href="#">Deals</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Order your favourite food now!</h1>
+
+    <div class="location-bar">
+      Your location: Dhanmondi, Dhaka • Change
+    </div>
+
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" placeholder="Search for restaurants, cuisines or dishes...">
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">New on foodmama</button>
+    <button class="filter-btn">Top Rated</button>
+    <button class="filter-btn">Fast Delivery</button>
+    <button class="filter-btn">Under ৳200</button>
+    <button class="filter-btn">Free Delivery</button>
+  </div>
+
+  <!-- Restaurants Section -->
+  <section>
+    <h2>Popular Restaurants Near You</h2>
+
+    <div class="restaurants-grid">
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a667?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Burger Bonanza</div>
+          <div class="cuisine">Burgers • American • Fast Food</div>
+          <div class="meta">
+            <span class="rating">4.6 ★</span>
+            <span>25-35 min • ৳49 delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1562967916-eb82221dfb92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Kacchi Bhai</div>
+          <div class="cuisine">Biryani • Mughlai • Bangladeshi</div>
+          <div class="meta">
+            <span class="rating">4.7 ★</span>
+            <span>30-40 min • Free delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Pizza King</div>
+          <div class="cuisine">Pizza • Italian • Fast Food</div>
+          <div class="meta">
+            <span class="rating">4.4 ★</span>
+            <span>20-30 min • ৳39 delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more cards as needed -->
+    </div>
+  </section>
+
+</body>
+</html>
