@@ -3,336 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>foodmama - Food Delivery in Dhaka | Order Online</title>
-  <meta name="description" content="Order food online from the best restaurants in Dhaka. Fast delivery, huge variety, exclusive deals - only on foodmama!"/>
+  <meta name="description" content="Discover and order from the finest restaurants across Dhaka with foodmama. Enjoy swift delivery, a vast selection of cuisines, exclusive discounts, and seamless online ordering experience tailored just for you."/>
+  <meta name="keywords" content="food delivery Dhaka, online food order, restaurants in Dhaka, fast food delivery, Bangladeshi cuisine, pizza delivery, biryani online"/>
+  <title>foodmama - Food Delivery Online</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #d92332;        /* foodmama red - energetic food color */
-      --primary-dark: #b01c28;
-      --orange: #ff6b35;
-      --light: #f8f9fa;
-      --gray: #6c757d;
-      --dark: #212529;
-      --white: #ffffff;
-    }
+  <!-- Favicon Placeholder -->
+  <link rel="icon" href="https://via.placeholder.com/32?text=FM" type="image/x-icon">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      background: var(--light);
-      line-height: 1.6;
-    }
-
-    /* Header / Top Bar */
-    .top-bar {
-      background: var(--dark);
-      color: white;
-      padding: 10px 5%;
-      font-size: 0.92rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .top-bar a {
-      color: var(--orange);
-      text-decoration: none;
-      margin-left: 1.5rem;
-    }
-
-    .top-bar a:hover { text-decoration: underline; }
-
-    /* Main Navbar */
-    .navbar {
-      background: white;
-      padding: 15px 5%;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .nav-links a {
-      margin-left: 2.2rem;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    /* Hero + Location + Search */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
-                  url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
-      color: white;
-      padding: 100px 5% 140px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.6rem, 7vw, 4.2rem);
-      margin-bottom: 1rem;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
-    }
-
-    .location-bar {
-      background: white;
-      color: var(--dark);
-      padding: 16px 24px;
-      border-radius: 50px;
-      max-width: 620px;
-      margin: 2rem auto 1.5rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      font-weight: 500;
-    }
-
-    .search-container {
-      max-width: 720px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 18px 24px 18px 60px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 50px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      outline: none;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 22px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.4rem;
-      color: var(--gray);
-    }
-
-    /* Filters & Sort */
-    .filters {
-      padding: 0 5% 30px;
-      background: white;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .filter-btn {
-      background: #eee;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Restaurants Grid */
-    section {
-      padding: 50px 5%;
-    }
-
-    h2 {
-      font-size: 2.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-dark);
-    }
-
-    .restaurants-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .restaurant-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .restaurant-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    }
-
-    .restaurant-img {
-      height: 200px;
-      background: #eee;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .restaurant-info {
-      padding: 1.4rem;
-    }
-
-    .restaurant-name {
-      font-size: 1.3rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .cuisine {
-      color: var(--gray);
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    .rating {
-      background: #28a745;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero { padding: 80px 5% 120px; }
-      .hero h1 { font-size: 2.8rem; }
-      .filters { justify-content: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Bar with Detailed Info -->
   <div class="top-bar">
-    <div>foodmama - Food & more, delivered fast in Dhaka</div>
-    <div>
-      <a href="#">Help</a>
-      <a href="#">Login / Sign up</a>
+    <div class="top-bar-left">Welcome to foodmama – Your trusted partner for delicious food and groceries delivered swiftly right to your doorstep in Dhaka and surrounding areas.</div>
+    <div class="top-bar-right">
+      <a href="#">Customer Support & FAQs</a>
+      <a href="#">Partner with Us as a Restaurant</a>
+      <a href="#">Login or Create an Account</a>
     </div>
   </div>
 
-  <!-- Navbar -->
+  <!-- Navbar with Enhanced Navigation -->
   <nav class="navbar">
     <div class="logo">foodmama</div>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Restaurants</a>
-      <a href="#">New on foodmama</a>
-      <a href="#">Deals</a>
-      <a href="#">Contact</a>
+    
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home Page</a>
+      <a href="#">Browse All Restaurants</a>
+      <a href="#">Latest Additions on foodmama</a>
+      <a href="#">Exclusive Deals and Offers</a>
+      <a href="#">Get in Touch with Us</a>
+      <a href="#" class="cart-icon">🛒 Cart (0)</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with More Descriptive Content -->
   <section class="hero">
-    <h1>Order your favourite food now!</h1>
+    <h1>Crave it? Order it! Get Your Favourite Meals Delivered Fresh and Hot</h1>
+    <p class="hero-subtitle">Explore a world of flavours from local favourites to international delights, all available for quick delivery in Dhaka. Whether it's a quick snack or a full family feast, foodmama has you covered with reliable service and unbeatable variety.</p>
 
     <div class="location-bar">
-      Your location: Dhanmondi, Dhaka • Change
+      Current Delivery Location: Dhanmondi Area, Dhaka City • <a href="#" class="change-location">Update Your Location</a>
     </div>
 
     <div class="search-container">
       <span class="search-icon">🔍</span>
-      <input type="text" class="search-input" placeholder="Search for restaurants, cuisines or dishes...">
+      <input type="text" class="search-input" id="searchInput" placeholder="Type in restaurant names, specific cuisines like Italian or Bangladeshi, or dish names such as 'Burger' or 'Biryani'...">
     </div>
   </section>
 
-  <!-- Filters -->
-  <div class="filters">
-    <button class="filter-btn active">All</button>
-    <button class="filter-btn">New on foodmama</button>
-    <button class="filter-btn">Top Rated</button>
-    <button class="filter-btn">Fast Delivery</button>
-    <button class="filter-btn">Under ৳200</button>
-    <button class="filter-btn">Free Delivery</button>
+  <!-- Cuisines Carousel Section for Variety -->
+  <section class="cuisines-section">
+    <h2>Explore Popular Cuisines Available Near You</h2>
+    <div class="cuisines-carousel">
+      <div class="cuisine-item">Bangladeshi Traditional</div>
+      <div class="cuisine-item">Italian Pasta & Pizza</div>
+      <div class="cuisine-item">Chinese Stir-Fry</div>
+      <div class="cuisine-item">Indian Spices</div>
+      <div class="cuisine-item">American Burgers</div>
+      <div class="cuisine-item">Thai Delights</div>
+      <div class="cuisine-item">Desserts & Sweets</div>
+      <div class="cuisine-item">Healthy Salads</div>
+      <div class="cuisine-item">Fast Food Favorites</div>
+    </div>
+  </section>
+
+  <!-- Filters with Detailed Options -->
+  <div class="filters" id="filters">
+    <button class="filter-btn active">Show All Restaurants</button>
+    <button class="filter-btn">Newly Added on foodmama</button>
+    <button class="filter-btn">Top-Rated Establishments</button>
+    <button class="filter-btn">Fastest Delivery Options</button>
+    <button class="filter-btn">Budget-Friendly Under ৳200</button>
+    <button class="filter-btn">Restaurants with Free Delivery</button>
+    <button class="filter-btn">Vegetarian Only</button>
+    <button class="filter-btn">Halal Certified</button>
+    <select class="sort-select">
+      <option>Sort by: Most Popular</option>
+      <option>Estimated Delivery Time</option>
+      <option>Customer Ratings</option>
+      <option>Distance from Your Location</option>
+      <option>Alphabetical Order</option>
+    </select>
   </div>
 
-  <!-- Restaurants Section -->
-  <section>
-    <h2>Popular Restaurants Near You</h2>
+  <!-- Restaurants Section with Expanded Grid -->
+  <section class="restaurants-section">
+    <h2>Discover Popular Restaurants in Your Vicinity</h2>
+    <p class="section-subtitle">We've curated a list of highly recommended eateries based on customer reviews, delivery speed, and menu variety. Click on any card to view full menu details and place your order instantly.</p>
 
-    <div class="restaurants-grid">
+    <div class="restaurants-grid" id="restaurantsGrid">
       <div class="restaurant-card">
         <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a667?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
         <div class="restaurant-info">
-          <div class="restaurant-name">Burger Bonanza</div>
-          <div class="cuisine">Burgers • American • Fast Food</div>
+          <div class="restaurant-name">Burger Bonanza Dhaka</div>
+          <div class="cuisine">Juicy Burgers, American Classics, Quick Fast Food Options</div>
           <div class="meta">
-            <span class="rating">4.6 ★</span>
-            <span>25-35 min • ৳49 delivery</span>
+            <span class="rating">4.6 ★ (over 500 reviews)</span>
+            <span>Estimated 25-35 minutes delivery • ৳49 delivery fee</span>
           </div>
+          <div class="promo">Exclusive: Buy 1 Get 1 Free on selected gourmet burgers!</div>
         </div>
       </div>
 
       <div class="restaurant-card">
         <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1562967916-eb82221dfb92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
         <div class="restaurant-info">
-          <div class="restaurant-name">Kacchi Bhai</div>
-          <div class="cuisine">Biryani • Mughlai • Bangladeshi</div>
+          <div class="restaurant-name">Kacchi Bhai Authentic</div>
+          <div class="cuisine">Aromatic Biryani, Mughlai Delicacies, Traditional Bangladeshi Fare</div>
           <div class="meta">
-            <span class="rating">4.7 ★</span>
-            <span>30-40 min • Free delivery</span>
+            <span class="rating">4.7 ★ (over 800 reviews)</span>
+            <span>Estimated 30-40 minutes delivery • Free delivery on orders above ৳300</span>
           </div>
+          <div class="promo">Special Offer: 10% discount on all orders exceeding ৳500</div>
         </div>
       </div>
 
       <div class="restaurant-card">
         <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
         <div class="restaurant-info">
-          <div class="restaurant-name">Pizza King</div>
-          <div class="cuisine">Pizza • Italian • Fast Food</div>
+          <div class="restaurant-name">Pizza King Express</div>
+          <div class="cuisine">Cheesy Pizzas, Italian Specialties, Convenient Fast Food</div>
           <div class="meta">
-            <span class="rating">4.4 ★</span>
-            <span>20-30 min • ৳39 delivery</span>
+            <span class="rating">4.4 ★ (over 400 reviews)</span>
+            <span>Estimated 20-30 minutes delivery • ৳39 delivery fee</span>
           </div>
+          <div class="promo">Limited Time: Free side with every large pizza order</div>
         </div>
       </div>
 
-      <!-- Add more cards as needed -->
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Sushi Haven</div>
+          <div class="cuisine">Fresh Sushi Rolls, Japanese Fusion, Seafood Specialties</div>
+          <div class="meta">
+            <span class="rating">4.8 ★ (over 300 reviews)</span>
+            <span>Estimated 35-45 minutes delivery • ৳59 delivery fee</span>
+          </div>
+          <div class="promo">Buy 2 Rolls, Get 1 Free on Weekends</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1565299585323-38d6b0865b96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Pasta Paradise</div>
+          <div class="cuisine">Creamy Pastas, Italian Home-Style, Vegetarian Options</div>
+          <div class="meta">
+            <span class="rating">4.5 ★ (over 600 reviews)</span>
+            <span>Estimated 25-35 minutes delivery • Free delivery</span>
+          </div>
+          <div class="promo">15% Off First Order with Code: PASTA15</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Grill Masters</div>
+          <div class="cuisine">Smoky Grills, BBQ Meats, International Barbecue</div>
+          <div class="meta">
+            <span class="rating">4.6 ★ (over 450 reviews)</span>
+            <span>Estimated 40-50 minutes delivery • ৳69 delivery fee</span>
+          </div>
+          <div class="promo">Combo Deal: Family Pack at 20% Off</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Salad Bowl Healthy</div>
+          <div class="cuisine">Fresh Salads, Healthy Eats, Vegan Choices</div>
+          <div class="meta">
+            <span class="rating">4.9 ★ (over 200 reviews)</span>
+            <span>Estimated 15-25 minutes delivery • ৳29 delivery fee</span>
+          </div>
+          <div class="promo">Free Dressing with Every Salad Order</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1579684947550-22e9250f8964?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Dessert Delight</div>
+          <div class="cuisine">Sweet Desserts, Cakes & Pastries, Indulgent Treats</div>
+          <div class="meta">
+            <span class="rating">4.3 ★ (over 350 reviews)</span>
+            <span>Estimated 20-30 minutes delivery • Free delivery on sweets</span>
+          </div>
+          <div class="promo">Buy 3 Get 1 Free on Selected Items</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1559847844-513ee7c497c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Shawarma Spot</div>
+          <div class="cuisine">Middle Eastern Shawarmas, Wraps & Kebabs, Street Food</div>
+          <div class="meta">
+            <span class="rating">4.5 ★ (over 550 reviews)</span>
+            <span>Estimated 25-35 minutes delivery • ৳49 delivery fee</span>
+          </div>
+          <div class="promo">Meal Deal: Shawarma + Drink for ৳199</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Noodle House</div>
+          <div class="cuisine">Asian Noodles, Soups & Stir-Fries, Chinese Inspired</div>
+          <div class="meta">
+            <span class="rating">4.4 ★ (over 400 reviews)</span>
+            <span>Estimated 30-40 minutes delivery • ৳59 delivery fee</span>
+          </div>
+          <div class="promo">Free Appetizer with Orders Over ৳400</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1565299507177-b0ac1a0769cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Taco Fiesta</div>
+          <div class="cuisine">Mexican Tacos, Burritos & Nachos, Spicy Flavors</div>
+          <div class="meta">
+            <span class="rating">4.6 ★ (over 300 reviews)</span>
+            <span>Estimated 20-30 minutes delivery • Free delivery</span>
+          </div>
+          <div class="promo">Taco Tuesday: 20% Off All Tacos</div>
+        </div>
+      </div>
+
+      <div class="restaurant-card">
+        <div class="restaurant-img" style="background-image:url('https://images.unsplash.com/photo-1551218808-94e220e08430?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="restaurant-info">
+          <div class="restaurant-name">Coffee Corner</div>
+          <div class="cuisine">Hot Coffees, Beverages & Snacks, Cafe Style</div>
+          <div class="meta">
+            <span class="rating">4.7 ★ (over 250 reviews)</span>
+            <span>Estimated 15-25 minutes delivery • ৳39 delivery fee</span>
+          </div>
+          <div class="promo">Buy Coffee, Get Muffin Half Price</div>
+        </div>
+      </div>
+
+      <!-- Add even more if needed for realism -->
     </div>
   </section>
 
+  <!-- Deals Section for Promotions -->
+  <section class="deals-section">
+    <h2>Exclusive Deals and Limited-Time Offers</h2>
+    <p class="section-subtitle">Take advantage of our special promotions from partner restaurants. Save big on your next meal with these handpicked deals designed to make dining affordable and exciting.</p>
+    <div class="deals-grid">
+      <div class="deal-card">Weekend Special: 25% Off on All Orders from Selected Restaurants</div>
+      <div class="deal-card">New User Bonus: ৳100 Off Your First Order with Code WELCOME100</div>
+      <div class="deal-card">Free Delivery on Orders Over ৳500 – No Minimum Required</div>
+      <div class="deal-card">Family Feast: Buy 2 Large Meals, Get 1 Small Free</div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2>How foodmama Works – Simple Steps to Delicious Delivery</h2>
+    <div class="steps-grid">
+      <div class="step">1. Enter Your Location: Provide your address to see nearby restaurants and accurate delivery estimates.</div>
+      <div class="step">2. Browse and Select: Explore menus, read reviews, and choose your favourite dishes from a wide variety.</div>
+      <div class="step">3. Place Your Order: Add items to cart, apply promo codes, and checkout securely with multiple payment options.</div>
+      <div class="step">4. Track and Enjoy: Monitor your order in real-time and receive it hot and fresh at your door.</div>
+    </div>
+  </section>
+
+  <!-- Footer with Comprehensive Links -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About foodmama</h3>
+        <p>foodmama is Dhaka's leading food delivery platform, connecting you with thousands of restaurants for convenient, reliable service since 2020.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="#">Privacy Policy and Terms</a>
+        <a href="#">Refund and Cancellation Policy</a>
+        <a href="#">Career Opportunities</a>
+        <a href="#">Blog and News</a>
+      </div>
+      <div class="footer-section">
+        <h3>Download Our App</h3>
+        <a href="#">Get it on Google Play</a>
+        <a href="#">Download on the App Store</a>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us on Social Media</h3>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 foodmama – All Rights Reserved. Proudly Serving Dhaka with Love and Flavour.</div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTop" class="scroll-top">↑ Back to Top</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
